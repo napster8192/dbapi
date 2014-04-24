@@ -128,7 +128,7 @@ def get_post_by_id(id, cursor):
 def clear(request):
 	query_source = file_get_contents('/home/nap/askpupkin/dbapi.sql')
 	db = mysql_connect()
-	cursor = cursor = mysql_set_cursor(db)
+	cursor = mysql_set_cursor(db)
 	cursor.execute(query_source)
 	# db.commit()
 	mysql_close(db, cursor)
@@ -173,7 +173,7 @@ def forum_create(request):
 	data_answer = {}
 
 	db = mysql_connect()
-	cursor = cursor = mysql_set_cursor(db)
+	cursor = mysql_set_cursor(db)
 	try:
 		cursor.execute(query_source, [data_source['name'], data_source['short_name'], get_id_by_email(data_source['user'], cursor)])
 		db.commit()
