@@ -12,14 +12,16 @@ CREATE TABLE `dbapi_user` (
     `email` varchar(75) NOT NULL UNIQUE
 )
 ;
+ALTER TABLE  `dbapi_user` ADD UNIQUE dbapi_user_email_idx (`email`);
 CREATE TABLE `dbapi_forum` (
     `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `name` varchar(40) NOT NULL,
     `short_name` varchar(30) NOT NULL UNIQUE,
-    `user_id` integer default NULL
+    `user_id` integer NOT NULL
 )
 ;
 ALTER TABLE `dbapi_forum` ADD CONSTRAINT `user_id_refs_id_9b906e5e` FOREIGN KEY (`user_id`) REFERENCES `dbapi_user` (`id`);
+ALTER TABLE  `dbapi_forum` ADD UNIQUE dbapi_forum_short_name_idx (`short_name`);
 CREATE TABLE `dbapi_thread` (
     `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
     `isDeleted` tinyint(1) NOT NULL default 0,
