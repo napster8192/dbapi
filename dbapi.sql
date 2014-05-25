@@ -38,6 +38,7 @@ CREATE TABLE `dbapi_thread` (
     `posts` integer NOT NULL default 0
 )
 ;
+ALTER TABLE  `dbapi_thread` ADD INDEX dbapi_thread_date_idx (`date`);
 ALTER TABLE `dbapi_thread` ADD CONSTRAINT `user_id_refs_id_70afe974` FOREIGN KEY (`user_id`) REFERENCES `dbapi_user` (`id`);
 ALTER TABLE `dbapi_thread` ADD CONSTRAINT `forum_id_refs_id_e90cdd8d` FOREIGN KEY (`forum_id`) REFERENCES `dbapi_forum` (`id`);
 CREATE TABLE `dbapi_post` (
@@ -58,6 +59,7 @@ CREATE TABLE `dbapi_post` (
     `points` integer NOT NULL default 0
 )
 ;
+ALTER TABLE  `dbapi_post` ADD INDEX dbapi_post_date_idx (`date`);
 ALTER TABLE `dbapi_post` ADD CONSTRAINT `user_id_refs_id_f14da7ec` FOREIGN KEY (`user_id`) REFERENCES `dbapi_user` (`id`);
 ALTER TABLE `dbapi_post` ADD CONSTRAINT `thread_id_refs_id_24f4334d` FOREIGN KEY (`thread_id`) REFERENCES `dbapi_thread` (`id`);
 ALTER TABLE `dbapi_post` ADD CONSTRAINT `forum_id_refs_id_4623a46b` FOREIGN KEY (`forum_id`) REFERENCES `dbapi_forum` (`id`);
